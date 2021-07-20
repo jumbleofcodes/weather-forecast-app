@@ -1,5 +1,7 @@
-<div class="map-container">
+<div id="time">{{currentTime}}</div>
+<div id="location">{{location_name}}, {{location_country}}</div>
+<div class="map-container" style="display: flex; align-items: flex-start;">
     <div class="map-frame">
-      <div id="map"></div>
+      <div id="map">{{currentTime|date:"HH:mm - EE MMM"}}</div>
     </div>
-  </div>
+</div>
