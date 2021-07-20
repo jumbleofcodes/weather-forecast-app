@@ -28,3 +28,9 @@ export interface Details {
     sunrise: number,
     sunset: number
 }
+
+export interface Forecast {
+    dt_txt: string;
+    list: Array<Weather>;
+}
+

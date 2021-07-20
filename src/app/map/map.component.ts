@@ -27,24 +27,12 @@ export class MapComponent implements AfterViewInit {
   private map: any;
   private marker = L.marker([0,0]);
   private data: any;
-
-  lat: any;
-  lon: any;
-  weather: any;
-  
-  timeline : any[] = []
-  weatherNow: any;
-  currentTime = new Date();
-  location_name: any;
-  location_country: any;
-
   constructor(private weatherService: WeatherService) { }
 
   ngAfterViewInit(): void {
     this.initMap();
     this.putMarkerOnMap();
   }
-
 
   //MAP 
   private initMap(): void {
@@ -62,7 +50,7 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
   
-  //PUT MARKER ON MAP ON CLICK
+  //PUT MARKER ON MAP
   putMarkerOnMap(){
     this.map.on("click", (e: { latlng: { lat: number; lng: number; }; }) => {
       console.log(e.latlng);
@@ -75,14 +63,13 @@ export class MapComponent implements AfterViewInit {
 
   getWeatherData(lat: any, lng: any){
     this.weatherService.getCurrentWeatherByCoordinates(lat,lng).subscribe((data: any) =>{
-      //console.log(data);
+      console.log(data);
       this.marker = L.marker([lat, lng]).addTo(this.map).bindPopup(`` +
       `<div>City: ${ data.name }</div>` +
       `<div>State: ${ data.sys.country }</div>` +
-      `<div>Temperature: ${ data.main.temp }°C</div>`).openPopup(); // add the marker onclick
+      `<div>Temperature: ${ data.main.temp }°C</div>`).openPopup();
     })
 
   }
 
-  
 }

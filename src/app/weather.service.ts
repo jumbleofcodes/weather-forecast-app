@@ -13,11 +13,11 @@ export class WeatherService {
   
   constructor(private http: HttpClient) { }
 
-  getCurrentWeatherByCoordinates(lat: number, lon: number): Observable<Weather> {
-    return this.http.get<Weather>(`${url}weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+  getCurrentWeatherByCoordinates(lat: number, lng: number): Observable<Weather> {
+    return this.http.get<Weather>(`${url}weather?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`)
   }
 
-  getForecastWeatherByCoordinates(lat: number, lon: number): Observable<Weather> {
-    return this.http.get<Weather>(`${url}forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
+  getForecastWeatherByCoordinates(lat: number, lng: number): Observable<Weather> {
+    return this.http.get<Weather>(`${url}forecast?lat=${lat}&lon=${lng}&units=metric&appid=${apiKey}`)
   }
 }
